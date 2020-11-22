@@ -9,7 +9,10 @@
     "greet": "vue-cli-service greet --name 'join'"
   },
   "dependencies": {
+    "ant-design-vue": "^2.0.0-rc.1",
     "core-js": "^3.6.5",
+    "element-ui": "^2.14.1",
+    "ol": "^6.4.3",
     "vue": "^3.0.0-0",
     "vue-router-layout": "^0.1.2"
   },

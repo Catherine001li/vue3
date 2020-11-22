@@ -2,17 +2,21 @@
   <img alt="Vue logo" src="./assets/logo.png">
   <!-- <HelloWorld msg="W/////elcome to Your Vue.js App"/> -->
   <div  class="test-canvas">
-    <circleDemo 
+    <a-button>加载地图</a-button>
+    <circleDemo></circleDemo>
+    <!-- <circleDemo 
     id="test"
     :progress="80"
     :canvasWidth="300"
-    :canvasHeight="300"/>
+    :canvasHeight="300"/> -->
   </div>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import circleDemo from './components/circleDemo.vue'
+// import circleDemo from './components/circleDemo.vue'
+// import circleDemo from './components/vueTest.vue'
+import circleDemo from './components/olmap.vue'
 
 export default {
   name: 'App',
@@ -38,7 +42,7 @@ export default {
   margin-top: 60px;
 }
 .test-canvas {
-  width: 300px;
-  height: 300px;
+  width: 500px;
+  height: 500px;
 }
 </style>
