@@ -6,7 +6,7 @@ export default {
       },
       app.mixin({
         created() {
-            console.log('this is a myPlugin')
+          // console.log('this is a myPlugin')
         }
       })
       console.log('app', app)
