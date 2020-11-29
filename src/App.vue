@@ -20,6 +20,7 @@
       </p>
       <a-button @click="huizhiCircle">绘制圆形</a-button>
       <a-button @click="huizhiPolygon">绘制多边形</a-button>
+      <a-button @click="clearDraw">取消绘制</a-button>
     </div>
     <circleDemo ref="mapdemo"></circleDemo>
     <!-- <circleDemo 
@@ -74,6 +75,11 @@ export default {
     getMapRangeFn () {
       if (this.$refs.mapdemo.hasMap()) {
         this.$refs.mapdemo.getMapRange()
+      }
+    },
+    clearDraw () {
+      if (this.$refs.mapdemo.hasMap()) {
+        this.$refs.mapdemo.clearDraw()
       }
     }
   }

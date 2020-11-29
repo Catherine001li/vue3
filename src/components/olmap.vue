@@ -48,6 +48,8 @@ export default {
       source: null,
       olPopupText: '',
       vectorLayer: null,
+      drawVectorLayer: null,
+      drawInteraction: null,
     };
   },
   mounted() {
@@ -206,20 +208,22 @@ export default {
       let source = new VectorSource()
       // 如果是多边形
       console.log('typeTmp', typeTmp)
-      let vector = new VectorLayer({
+      let vector = this.drawVectorLayer = new VectorLayer({
           source: source
       })
       this.map.addLayer(vector)
-      let draw = new Draw({
-          source: source,
-          type: 'Circle'
-      })
+      let draw = null
       if (typeTmp === 'polygon') {
         this.map.removeInteraction(draw);
-        draw = new Draw({
+        draw = this.drawInteraction = new Draw({
           source: source,
           type: 'Circle',
           geometryFunction: createBox()
+        })
+      } else {
+        draw = this.drawInteraction = new Draw({
+          source: source,
+          type: 'Circle'
         })
       }
       this.map.addInteraction(draw)
@@ -243,7 +247,17 @@ export default {
           zoomLevel: this.map.getView().getZoom()// 当前缩放级别，缩放级别可用来判断是否要将要素聚合进行显示
       }
       console.log('getMapRange', state)
-    }
+    },
+    clearDraw () {
+      let arr = this.map.getLayers().array_
+      console.log('this.map.getLayers()', arr, arr[0], arr.length)
+      arr.forEach((e, index) => {
+        if (index) {
+          e.getSource().clear()
+        }
+      })
+      this.map.removeInteraction(this.drawInteraction) 
+    },
     // addInteraction(val='Square'){
     //     let type = val;
     //     if(type !== 'None'){
